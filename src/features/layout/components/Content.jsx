@@ -5,7 +5,6 @@ import {
   Grid,
   Card,
   Typography,
-  CardActionArea,
   Button,
 } from "@mui/material";
 
@@ -20,6 +19,7 @@ import { useFavorites } from "../../view/hooks/FavoritesContext";
 export const Content = () => {
   const { addToCart } = useCart();
   const { addFavorite, removeFavorite, isFavorite } = useFavorites();
+
   const products = [
     {
       title: "Air Jordan 4 Retro (Imperial Purple)",
@@ -123,6 +123,24 @@ export const Content = () => {
             Explora una amplia variedad de productos y disfruta de una
             experiencia moderna y segura.
           </Typography>
+
+          {/* BOTON GITHUB */}
+          <Button
+            variant="contained"
+            color="primary"
+            href="https://github.com/Sneider007/taller_3_REACT.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            sx={{
+              mt: 4,
+              fontWeight: 600,
+              px: 4,
+              py: 1.5,
+              borderRadius: 3,
+            }}
+          >
+            Ver Repositorio en GitHub
+          </Button>
         </Box>
       </Box>
 
@@ -140,14 +158,7 @@ export const Content = () => {
                   backgroundColor: "#1e1e1e",
                 }}
               >
-                {/* IMAGEN */}
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: 220,
-                    overflow: "hidden",
-                  }}
-                >
+                <Box sx={{ width: "100%", height: 220, overflow: "hidden" }}>
                   <Box
                     component="img"
                     src={product.image}
@@ -160,17 +171,7 @@ export const Content = () => {
                   />
                 </Box>
 
-                {/* INFO */}
-                <Box
-                  sx={{
-                    flex: 1,
-                    width: "100%",
-                    backgroundColor: "#1e1e1e",
-                    color: "white",
-                    px: 2,
-                    py: 2,
-                  }}
-                >
+                <Box sx={{ color: "white", px: 2, py: 2 }}>
                   <Typography variant="subtitle1" fontWeight={600}>
                     {product.title}
                   </Typography>
@@ -198,7 +199,11 @@ export const Content = () => {
 
                     <Button
                       variant="contained"
-                      startIcon={isFavorite(product.title) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                      startIcon={
+                        isFavorite(product.title)
+                          ? <FavoriteIcon />
+                          : <FavoriteBorderIcon />
+                      }
                       onClick={() => handleFavorite(product)}
                       sx={{
                         backgroundColor: "#ff3d3d",
